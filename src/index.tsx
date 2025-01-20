@@ -1,5 +1,9 @@
 import RnGps from './NativeRnGps';
 
-export function multiply(a: number, b: number): number {
-  return RnGps.multiply(a, b);
+export function startLocationUpdates(updateInterval: number, minDistance: number): void {
+  RnGps.startLocationUpdates(updateInterval, minDistance);
+}
+
+export function stopGpsUpdates(): void {
+  RnGps.stopGpsUpdates();
 }

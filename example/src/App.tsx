@@ -1,12 +1,28 @@
-import { Text, View, StyleSheet } from 'react-native';
-import { multiply } from 'rn-gps';
-
-const result = multiply(3, 7);
+import { useEffect } from 'react';
+import { View, StyleSheet, Button } from 'react-native';
+import { useGps } from './hooks/useGps';
 
 export default function App() {
+  const { location, error, isTracking, startTracking, stopTracking } = useGps();
+
+  useEffect(() => {
+    console.log('Error:', error);
+  }, [error]);
+
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Button
+        color={isTracking ? 'blue' : 'green'}
+        title={isTracking ? 'Tracking...' : 'Start tracking'}
+        onPress={startTracking}
+      />
+      <View style={styles.separate} />
+      <Button
+        color={isTracking ? 'red' : 'gray'}
+        title="Stop tracking"
+        onPress={stopTracking}
+        disabled={isTracking ? false : true}
+        />
     </View>
   );
 }
@@ -16,5 +32,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  separate: {
+    margin: 10,
   },
 });
