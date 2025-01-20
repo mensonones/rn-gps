@@ -1,5 +1,5 @@
 
-# rn-gps
+# rn-gps (in construction)
 
 Este módulo fornece funcionalidade para acessar e obter atualizações de localização no dispositivo Android usando o GPS. Ele permite iniciar e parar atualizações de localização, bem como obter dados de localização em tempo real.
 
